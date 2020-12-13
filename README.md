@@ -20,10 +20,42 @@ cd admin
 mvn exec:java
 ```
 
-### Running admin jar
+### Running web war
 ```
 cd web
 mvn jetty:run
 ```
 
 Navigate to localhost:8080
+
+## Gradle
+
+### Test
+```
+./gradlew test
+```
+
+### Create admin jar
+
+```
+./gradlew fatJar
+```
+
+### Running admin jar
+```
+java -jar ./admin/build/libs/admin-all-1.0.jar
+```
+
+### Create web war
+
+```
+./gradlew build
+```
+
+### Running web war
+```
+./gradlew appRun
+```
+
+Navigate to localhost:8080/web
+
