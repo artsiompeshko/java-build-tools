@@ -1,0 +1,19 @@
+plugins {
+    id 'war'
+}
+
+apply from: 'https://raw.github.com/gretty-gradle-plugin/gretty/master/pluginScripts/gretty.plugin'
+
+group = 'com.builders'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':services')
+    implementation project(':utils')
+    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
+    testImplementation "junit:junit:4.11"
+}

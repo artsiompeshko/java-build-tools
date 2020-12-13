@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.builders'
+version = '1.0'
+
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Java build tools',
+                'Implementation-Version': version,
+                'Main-Class': 'com.builders.App'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':services')
+    implementation project(':utils')
+    testImplementation "junit:junit:4.11"
+}
